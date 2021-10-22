@@ -1,0 +1,178 @@
+body{
+    margin: 0px;
+    min-width: 100%;
+}
+
+header{
+    min-width: 100%;
+    padding: 20px;
+    color: #aaa;
+    background: #141414;
+}
+
+header row{
+    margin: 0px;
+}
+
+header h1{
+    margin: 0px;
+}
+
+header h2{
+    font-size: 80px;
+}
+
+header .btn{
+    color: #202020;
+    margin: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background: #2D6022;
+    border-color: #2D6022;
+    border-radius: 3px;
+    offset-position: 50px;
+}
+
+header .btn-like{
+    color: #004F9E;
+    margin: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background: #2D6022;
+    border-color: #2D6022;
+    border-radius: 3px;
+    offset-position: 50px;
+}
+
+header #test{
+    color: #004F9E;
+}
+
+.Indicator{
+    background: #277CD1;
+    border-color: #277CD1;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 0px;
+    padding-right: 0px;
+    max-width: 6px;
+    margin: 0px;
+    margin-left: 42%;
+}
+
+.btn:hover{
+    color: rgb(230, 230, 230);
+    margin: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background: #277CD1;
+    border-color: #277CD1;
+    border-radius: 3px;
+    offset-position: 50px;
+}
+
+header img{
+    height: 230px;
+}
+
+header .row,
+footer .row{
+    display: flex;
+    align-items: center;
+}
+
+header nav{
+    display: flex;
+    justify-content: end;
+}
+
+.jumbotron{
+    color: #FFF;
+    min-height: fit-content;
+    margin-bottom: 0px;
+    justify-content: center;
+}
+
+.jumbotron .container{
+    background-size: cover;
+    margin: 5%;
+}
+
+.jumbotron h2{
+    color: #2D6022;
+}
+
+.jumbotron p{
+    margin: 3%;
+}
+
+.jumbotron .row{
+    display: flex;
+    justify-content: center;
+}
+
+.jumbotron .btn{
+    color: #202020;
+    margin: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background: #2D6022;
+    border-color: #2D6022;
+    border-radius: 3px;
+    offset-position: 50%;
+}
+
+.jumbotron .btn:hover{
+    color: rgb(230, 230, 230);
+    margin: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background: #277CD1;
+    border-color: #277CD1;
+    border-radius: 3px;
+    offset-position: 50%;
+}
+
+.jumbotron .Big{
+    font-family: 'Rampart One', cursive;
+    font-size: 80px;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.jumbotron .Bigred{
+    color: #FFEC1D;
+    font-family: 'Rampart One', cursive;
+    font-size: 120px;
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+}
+
+footer{
+    color: #aaa;
+    font-size: larger;
+    min-width: 100%;
+    min-height: fit-content;
+    position: absolute;
+}
+
+footer p{
+    margin: 3%;
+    font-size: 45px;
+    font-family: 'Rampart One', cursive;
+}
