@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership - The Ecologist Party</title>
+    <link rel="shortcut icon" type="image/jpg" href="favicon.jpg">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="container">
+        <div class="row">
+            <div class="imageWithCredit">
+                <img src="https://i.imgur.com/zeDXvwc.jpg" alt="jeanetteblackburn1">
+                <div class="credit"><a href="https://jeanetteblackburn.co.nz" target="_blank" rel="noopener">Jeanette Blackburn</a></div>
+            </div>
+            <h2 class="col-sm-8">MEMBERSHIP</h2>
+        </div>
+        <nav class="row">
+            <a class="btn btn-primary"href="index.html">Home</a>
+            <a class="btn btn-primary"href="info.html">Info</a>
+            <a class="btn btn-primary"href="contact.html">Contact</a>
+            <div class="btn-like">Membership</div>
+            <a class="btn" href="policy.html">Policy</a>
+        </nav>
+    </header>
+    <section class="jumbotron">
+        <div class="container">
+
+            <H1 class="row text-center">Membership</H1>
+            <p>The Ecologist Party welcomes membership from any living person by
+                way of direct credit to our “Kiwi Bank” New Zealand Bank account.</p>
+            <p>Bank account name and number is :</p>
+            <div class="row" style="justify-content: left; margin-left: 3%;"><h3>The</h3><h2>Ecologist</h2><h3>Party</h3></div>
+            <h2 style="justify-content: left; color: #DDD; margin-left: 3%;">38-9001-0161333-01</h2>
+            <p><b>ANNUAL. </b>The annual membership fee is NZ$10.00</p>
+            <p><b>LIFE. </b>Life membership is NZ$1,000.00. life fees will be held permanantly</p>
+            <p><b>Donations and Tithing </b>can be offered at any time to any amount.</p>
+            
+            <div class="container" id="form-container">
+            <form style="margin: 6%;" action="Form/form-handler.py">
+                <p style="margin-bottom: 40px;">Please do fill out these specific details to allow us to satisfy our official recognition with the New Zealand
+                    Electoral Commission rules and policies for bona-fide political parties.</p>
+                <label for="fname">Full name as per your passport or any other recognised proof of identity.</label><br>
+                <input type="text" id="fname" name="fname"><br>
+
+                <label for="address">Home Address</label><br>
+                <input type="text" id="address" name="address"><br>
+                
+                <label for="number1">Mobile Number</label><br>
+                <input type="text" id="number1" name="number1"><br>
+                <label for="number2">Home Phone Number</label><br>
+                <input type="text" id="number2" name="number2"><br>
+
+                <label for="email">Email Address</label><br>
+                <input type="text" id="email" name="email"><br><br>
+
+                <p>Would you like to recieve our:</p><br>
+                <p>Quaterly <b>Newsletter:</b></p>
+                <label for="newsy">Yes</label>
+                <input type="radio" id="newsy" name="news">
+                <label for="newsn">No</label>
+                <input type="radio" id="newsn" name="news"><br>
+                <p><b>Blog:</b></p>
+                <label for="blogy">Yes</label>
+                <input type="radio" id="blogy" name="blog">
+                <label for="blogn">No</label>
+                <input type="radio" id="blogn" name="blog">
+                <p><b>Chat</b> Link:</p>
+                <label for="chaty">Yes</label>
+                <input type="radio" id="chaty" name="chat">
+                <label for="chatn">No</label>
+                <input type="radio" id="chatn" name="chat">
+
+                <p>Would you like to become an active member in any way? If so suggest in what way? To any detail you can offer.
+                    Perhaps as a potential candidate? An active functionary member? Your call, here:</p>
+                <textarea type="text" id="suggest" name="suggest"></textarea><br><br>
+
+                <input type="submit" value="Submit">
+            </form>
+            </div>
+
+            <div class="row text-center">
+                <p class="Big">The</p>
+                <p class="Bigred">Ecologist</p>
+                <p class="Big">Party</p>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

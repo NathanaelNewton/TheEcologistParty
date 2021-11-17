@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - The Ecologist Party</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="container">
+        <div class="row">
+            <h1 class="col-sm-4"><img src="https://i.imgur.com/wRwg1Pj.jpg"></h1>
+            <h2 class="col-sm-8">Donate</h2>
+        </div>
+        <nav class="row">
+            <a class="btn"href="Home.html" role="button">Home</a>
+            <a class="btn"href="Why.html" role="button">Why</a>
+            <div class="btn-like">Donate</div>
+            <a class="btn" href="policy.html">Policy</a>
+        </nav>
+    </header>
+    <section class="jumbotron" style="background-color: #202020">
+        <div class="container"></div>
+            <H1 class="row text-center">Donate</H1>
+            <H2 class="row text-center">Buy Us a Coffee</H2>
+            <!-- PayPal button below-->
+            <div class="row">
+                <div id="smart-button-container">
+                    <div style="text-align: center"><label for="description">Description (optional) </label><input type="text" name="descriptionInput" id="description" maxlength="127" value=""></div>
+                      <p id="descriptionError" style="visibility: hidden; color:red; text-align: center;">Please enter a description</p>
+                    <div style="text-align: center"><label for="amount">Donation Amount </label><input name="amountInput" type="number" id="amount" value="" ><span> NZD</span></div>
+                      <p id="priceLabelError" style="visibility: hidden; color:red; text-align: center;">Please enter a price</p>
+                    <div id="invoiceidDiv" style="text-align: center; display: none;"><label for="invoiceid"> </label><input name="invoiceid" maxlength="127" type="text" id="invoiceid" value="" ></div>
+                      <p id="invoiceidError" style="visibility: hidden; color:red; text-align: center;">Please enter an Invoice ID</p>
+                    <div style="text-align: center; margin-top: 0.625rem;" id="paypal-button-container"></div>
+                  </div>
+                  <script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=NZD" data-sdk-integration-source="button-factory"></script>
+                  <script>
+                  function initPayPalButton() {
+                    var description = document.querySelector('#smart-button-container #description');
+                    var amount = document.querySelector('#smart-button-container #amount');
+                    var descriptionError = document.querySelector('#smart-button-container #descriptionError');
+                    var priceError = document.querySelector('#smart-button-container #priceLabelError');
+                    var invoiceid = document.querySelector('#smart-button-container #invoiceid');
+                    var invoiceidError = document.querySelector('#smart-button-container #invoiceidError');
+                    var invoiceidDiv = document.querySelector('#smart-button-container #invoiceidDiv');
+                
+                    var elArr = [description, amount];
+                
+                    if (invoiceidDiv.firstChild.innerHTML.length > 1) {
+                      invoiceidDiv.style.display = "block";
+                    }
+                
+                    var purchase_units = [{"amount":{"currency_code":"NZD","value":1,"breakdown":{"item_total":{"currency_code":"NZD","value":1}}},"items":[{"name":"item name","unit_amount":{"currency_code":"NZD","value":1},"quantity":"1","category":"DONATION"}]}]
+                
+                    function validate(event) {
+                      return event.value.length > 0;
+                    }
+                
+                    paypal.Buttons({
+                      style: {
+                        color: 'blue',
+                        shape: 'rect',
+                        label: 'donate',
+                        layout: 'vertical',
+                        
+                      },
+                
+                      onInit: function (data, actions) {
+                        actions.disable();
+                
+                        if(invoiceidDiv.style.display === "block") {
+                          elArr.push(invoiceid);
+                        }
+                
+                        elArr.forEach(function (item) {
+                          item.addEventListener('keyup', function (event) {
+                            var result = elArr.every(validate);
+                            if (result) {
+                              actions.enable();
+                            } else {
+                              actions.disable();
+                            }
+                          });
+                        });
+                      },
+                
+                      onClick: function () {
+                        if (description.value.length < 1) {
+                          descriptionError.style.visibility = "visible";
+                        } else {
+                          descriptionError.style.visibility = "hidden";
+                        }
+                
+                        if (amount.value.length < 1) {
+                          priceError.style.visibility = "visible";
+                        } else {
+                          priceError.style.visibility = "hidden";
+                        }
+                
+                        if (invoiceid.value.length < 1 && invoiceidDiv.style.display === "block") {
+                          invoiceidError.style.visibility = "visible";
+                        } else {
+                          invoiceidError.style.visibility = "hidden";
+                        }
+                
+                        purchase_units[0].description = description.value;
+                        purchase_units[0].amount.value = amount.value;
+                        purchase_units[0].amount.breakdown.item_total.value = amount.value;
+                        purchase_units[0].items[0].unit_amount.value = amount.value;
+                
+                        if(invoiceid.value !== '') {
+                          purchase_units[0].invoice_id = invoiceid.value;
+                        }
+                      },
+                
+                      createOrder: function (data, actions) {
+                        return actions.order.create({
+                          purchase_units: purchase_units,
+                        });
+                      },
+                
+                      onApprove: function (data, actions) {
+                        return actions.order.capture().then(function (orderData) {
+                
+                          // Full available details
+                          console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                
+                          // Show a success message within this page, e.g.
+                          const element = document.getElementById('paypal-button-container');
+                          element.innerHTML = '';
+                          element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                
+                          // Or go to another URL:  actions.redirect('thank_you.html');
+                          
+                        });
+                      },
+                
+                      onError: function (err) {
+                        console.log(err);
+                      }
+                    }).render('#paypal-button-container');
+                  }
+                  initPayPalButton();
+                  </script>
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tincidunt aliquet porttitor. Proin eget erat turpis.
+                Fusce euismod et purus ac aliquam. Phasellus a sapien sed mauris pharetra mattis. Aliquam a maximus magna.
+                In sollicitudin purus non dolor pretium rutrum. Mauris quis ante ut orci rutrum feugiat.
+                Nam vel tortor aliquet sem bibendum bibendum in quis purus. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                Morbi vitae finibus est. Sed dui leo, molestie eu ex quis, suscipit dictum ante.
+                Praesent iaculis, tellus ut semper semper, metus nulla hendrerit risus, a auctor lorem ligula nec dui. 
+                Nullam malesuada consequat blandit. Nullam turpis dui, eleifend vel nibh id, luctus pretium lectus. 
+                Phasellus sed eros ligula. Mauris a vehicula eros.
+                Maecenas eleifend est sapien, nec mattis neque aliquet in. In hac habitasse platea dictumst.
+                Morbi feugiat felis sollicitudin, tincidunt ex id, ultrices mauris. Sed lacinia velit vel diam accumsan, id porttitor tortor bibendum. Proin dictum mi nisl, eu sollicitudin eros convallis quis. Proin non gravida nunc. Nam nec elit vel orci semper faucibus. Morbi egestas pellentesque mi id suscipit.</p>
+                <div class="row text-center">
+                    <p class="Big">The</p>
+                    <p class="Bigred">Ecologist</p>
+                    <p class="Big">Party</p>
+                </div>
+    </section>
+</body>
+</html>
